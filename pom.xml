@@ -53,7 +53,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<classifier>exec</classifier>
+					<!--<classifier>exec</classifier>-->
 					<image>
 						<name>haybu/${project.artifactId}</name>
 						<builder>paketobuildpacks/builder:tiny</builder>
@@ -83,10 +83,9 @@
 				</executions>
 			</plugin>
 
-			<plugin>
+			<plugin> <!-- needed for picocli generate code to help create a native image -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<!-- annotationProcessorPaths requires maven-compiler-plugin version 3.5 or higher -->
 				<configuration>
 					<annotationProcessorPaths>
 						<path>
