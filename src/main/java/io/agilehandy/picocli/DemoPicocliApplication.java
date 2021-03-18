@@ -14,7 +14,7 @@ import org.springframework.nativex.hint.TypeHint;
 		types = {
 				@TypeHint(
 						types = { CommandLine.class },
-						access = AccessBits.CLASS | AccessBits.DECLARED_CONSTRUCTORS
+						access = AccessBits.ALL
 				)
 		}
 )

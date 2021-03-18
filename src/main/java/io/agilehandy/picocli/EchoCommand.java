@@ -28,20 +28,20 @@ import org.springframework.stereotype.Component;
  **/
 
 @Component
-@CommandLine.Command(name = "echoo", mixinStandardHelpOptions = true, version = "echoo 4.0",
+@CommandLine.Command(name = "echoo", mixinStandardHelpOptions = true, version = "echoo 1.0",
 		description = "Echo back a message to STDOUT.")
 public class EchoCommand implements Callable<Integer> {
 
-	@CommandLine.Option(names = {"-o", "--option"}, description = "To capitalize (yes, no)")
-	private String capitalize = "yes";
+	@CommandLine.Option(names = {"-c", "--capitalize"}, description = "To capitalize (true, false)")
+	private boolean capitalize = true;
 
-	@CommandLine.Parameters(index = "0", description = "A message to echo.")
+	@CommandLine.Parameters(index = "0", description = "A message to echo back.")
 	private String message;
 
 
 	@Override
-	public Integer call() throws Exception {
-		if (capitalize.equalsIgnoreCase("yes"))
+	public Integer call() {
+		if (capitalize)
 			System.out.println("message: " + message.toUpperCase());
 		else
 			System.out.println("message: " + message.toLowerCase());
