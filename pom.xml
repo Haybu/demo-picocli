@@ -53,6 +53,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<classifier>exec</classifier>
 					<image>
 						<name>haybu/${project.artifactId}</name>
 						<builder>paketobuildpacks/builder:tiny</builder>
@@ -116,5 +117,33 @@
 			<url>https://repo.spring.io/release</url>
 		</pluginRepository>
 	</pluginRepositories>
+
+	<!-- to build a GraalVM native image only -->
+	<profiles>
+		<profile>
+			<id>native-image</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.graalvm.nativeimage</groupId>
+						<artifactId>native-image-maven-plugin</artifactId>
+						<version>21.0.0</version>
+						<configuration>
+							<!-- The native image build needs to know the entry point to your application -->
+							<mainClass>io.agilehandy.picocli.DemoPicocliApplication</mainClass>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>native-image</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
