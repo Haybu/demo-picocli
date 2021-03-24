@@ -11,7 +11,7 @@ to echo with capitalized message option (notice no need to issue the 'echoo' com
 docker run -it haybu/demo-picocli:latest -c=yes Haytham
 ```
 
-that should ech back:
+that should echo back:
 
 message: HAYTHAM
 
