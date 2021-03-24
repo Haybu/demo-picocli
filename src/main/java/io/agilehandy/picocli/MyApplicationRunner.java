@@ -23,12 +23,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.stereotype.Component;
 
+// example from: https://github.com/remkop/picocli/tree/master/picocli-spring-boot-starter
+
 @Component
 public class MyApplicationRunner implements CommandLineRunner, ExitCodeGenerator {
 
 	private final EchoCommand echoCommand;
 
-	private final IFactory factory; // auto-configured to inject PicocliSpringFactory
+	private final IFactory factory;
 
 	private int exitCode;
 

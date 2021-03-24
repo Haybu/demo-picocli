@@ -11,12 +11,7 @@ import org.springframework.nativex.hint.TypeHint;
 
 @NativeHint (
 		trigger = PicocliAutoConfiguration.class,
-		types = {
-				@TypeHint(
-						types = { CommandLine.class },
-						access = AccessBits.ALL
-				)
-		}
+		types = {@TypeHint(types = { CommandLine.class }, access = AccessBits.ALL)}
 )
 @SpringBootApplication
 public class DemoPicocliApplication {
